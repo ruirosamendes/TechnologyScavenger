@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SitesLoaderUnitTest.cs" />
+    <Compile Include="TechnologyUnitTests.cs" />
+    <Compile Include="SitesLoaderUnitTests.cs" />
+    <Compile Include="TechnologyFinderUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -55,6 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="alexa1M.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MagentoSitesURLs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MagentoStringPatterns.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

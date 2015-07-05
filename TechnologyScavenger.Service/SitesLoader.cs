@@ -8,11 +8,36 @@ namespace TechnologyScavenger.Service
 {
     public class SitesLoader
     {
-        private FileStream sitesFile;
+        private List<string> mSitesURLs;
 
-        public SitesLoader(FileStream sitesFile)
+        public SitesLoader(Stream sitesFile)
         {
-            this.sitesFile = sitesFile;
+            mSitesURLs = new List<string>();
+            try
+            {
+                using (StreamReader sr = new StreamReader(sitesFile))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        mSitesURLs.Add(line);
+                        Console.WriteLine(line);
+                    }            
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public List<string> SitesURLs
+        {
+            get
+            {
+                return mSitesURLs;
+            } 
         }
     }
 }
