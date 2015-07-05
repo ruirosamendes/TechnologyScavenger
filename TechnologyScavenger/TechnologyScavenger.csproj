@@ -241,8 +241,13 @@
     <Content Include="fonts\font-awesome\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\HostDemo.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\plugins\metisMenu\jquery.metisMenu.js" />
     <Content Include="Scripts\plugins\pace\pace.min.js" />
