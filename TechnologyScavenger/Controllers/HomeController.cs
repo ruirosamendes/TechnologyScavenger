@@ -1,27 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TechnologyScavenger.Models;
+using TechnologyScavenger.Service;
 
 namespace TechnologyScavenger.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Technology(string id)
         {
-            ViewData["SubTitle"] = "Welcome in ASP.NET MVC 5 INSPINIA SeedProject ";
-            ViewData["Message"] = "It is an application skeleton for a typical MVC 5 project. You can use it to quickly bootstrap your webapp projects.";
+            string technologyName = id;
+            string patternsFilePath = Server.MapPath("~/App_Data/") + technologyName + "StringPatterns.txt";
+            FileStream patternsFile = new FileStream(patternsFilePath, FileMode.Open);
+            ITechnology technology = new Technology("technologyName", patternsFile);
+            string sitesFilePath = Server.MapPath("~/App_Data/") + technologyName + "SitesURLs.txt";
+            FileStream sitesFile = new FileStream(sitesFilePath, FileMode.Open);
+            SitesLoader sitesLoader = new SitesLoader(sitesFile);
 
-            return View();
+            TechnologyFinder finder = new TechnologyFinder(technology, sitesLoader.SitesURLs);
+            finder.RunCrawler();
+
+            TechnologyViewModel model = new TechnologyViewModel();
+            model.Name = technology.Name;
+            model.URLs = finder.SiteURLsWithTheTechnology;
+
+            ViewData["Title"] = technologyName;
+            ViewData["Message"] = "It's the " + technologyName + " message to view page";
+
+            return View(model);
         }
 
-        public ActionResult Minor()
-        {
-            ViewData["SubTitle"] = "Simple example of second view";
-            ViewData["Message"] = "Data are passing to view by ViewData from controller";
-
-            return View();
-        }
     }
 }

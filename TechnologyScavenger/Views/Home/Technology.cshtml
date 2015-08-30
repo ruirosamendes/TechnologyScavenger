@@ -1,0 +1,21 @@
+﻿@model TechnologyScavenger.Models.TechnologyViewModel
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>@ViewBag.Title</h5>
+                <small>@ViewData["Message"]</small>
+            </div>
+            <div class="ibox-content">
+                <p>
+                    @foreach (string url in Model.URLs)
+                    {
+                        var urlLink = "http://" + @url;
+                        <a href="@urlLink"  target="_blank" class="btn btn-w-m btn-success">@url</a>
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

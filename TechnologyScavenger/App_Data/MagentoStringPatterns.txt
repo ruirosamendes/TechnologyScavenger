@@ -1,0 +1,5 @@
+Varien
+/skin/frontend/
+/app/design/frontend
+/giftcard/customer
+/checkout/cart/
